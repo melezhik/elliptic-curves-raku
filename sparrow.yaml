@@ -79,7 +79,7 @@ tasks:
           cd source/
           zef install . --deps-only --test-depends --build-depends --/test -to=home         
           /usr/bin/time -f "%E real,%U user,%S sys | CPU Percentage: %P" -o "${cache_root_dir}/${version}_time" \
-          zef test --debug . && touch "${cache_root_dir}/${version}_ok"
+          zef test . && touch "${cache_root_dir}/${version}_ok"
           
     depends:
       -
@@ -88,5 +88,5 @@ tasks:
     name: install-deps
     language: Bash
     code: |
-      sudo apt-get install -y time 
+      sudo apt-get -y -qq install time 
       zef install --/test Text::Table::Simple
